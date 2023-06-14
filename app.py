@@ -18,8 +18,8 @@ def new_painting():
 
 @app.get('/api/painting')
 def get_paintings ():
-    results = run_statement('call get_paintings(?)')
-    if(type(results) == list and results != []):
+    results = run_statement('call get_paintings()')
+    if(type(results) == list):
         return make_response(jsonify(results), 200)
     else:
         return make_response(jsonify("Something went wrong"), 500)
