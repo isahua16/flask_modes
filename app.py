@@ -18,10 +18,7 @@ def new_painting():
 
 @app.get('/api/painting')
 def get_paintings ():
-    error = check_data(request.args, ['artist'])
-    if(error != None):
-        return make_response(jsonify(error), 400)
-    results = run_statement('call get_paintings(?)', [request.args.get('artist')])
+    results = run_statement('call get_paintings(?)')
     if(type(results) == list and results != []):
         return make_response(jsonify(results), 200)
     else:
